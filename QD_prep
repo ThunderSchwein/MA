@@ -1,17 +1,265 @@
-*qunatum Dot Preparation
-The quantum Dots where prepared following the colloidal approach introduced Murray et al. [2]. In this work a procedure was done that was
-described by Boatman et al. [1].
-This procedure consists of three steps : preparation of selenium and cadmium solutions, heating and mixing both solutions and extracting the
-quantum Dots.
-For the first step, 37 mg of Selen (Se) were dissolved in 5 ml ODE (C H ), mixed with 0.4 ml TOP;
-In a different reservoir, 13 mg Cadmiumoxide (CdO) were dissolved in 10 ml ODE and 0.6 ml oleic acid.
+\documentclass[12pt]{article}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc} 
+\usepackage[ngerman]{babel}
+\usepackage{fixltx2e}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption} 
+%\usepackage{subscript}
+\author{Konstantin Murasov} 
+\title{Simulationen zur Abbildung ultra-starker lokalisierter Magnetfelder durch schnelle Protonen}
+\begin{document}
 
-The second step consisted of heating the Cadmium solution up to 225°C [with a Heizpilz] and adding 1 ml of the Selen solution, while keeping the 
-temperature constant. By adding the Selen the nucleation reaction is started. The high temperatures allow the QDs to grow up to
-the size of several nm.
+\begin{center}
 
-The investigation by Svenja Herberts show that after a time of ~200 seconds the growth of QDs size stops,
-which indicates that the growth mechanism comes to an equilibrium at that stage.
+Bachelorarbeit im Studiengang "Medizinische Physik" der Heinrich-Heine-Universität Düsseldorf\\
 
+\vspace{5cm}
+
+\large Simulationen zur Abbildung ultra-starker lokalisierter Magnetfelder durch schnelle Protonen\\
+
+%\normalsize Numerische Simulation eines Proton-Imaging Experiments
+\vspace{5cm}
+
+
+
+Vorgelegt von:\\
+Konstantin Murasov\\
+Wangeroogestr 2\\
+40468 Düsseldorf\\
+konstantin.murasov@hhu.de\\
+Matrikelnummer: 2032393\\
+\end{center}
+\begin{figure*}[b]
+Abgabedatum : 11 August 2015\\
+\\
+Erstgutachter: Dr. Götz Lehmann\\
+Zweitgutachter: Prof. Dr. Dr. Carsten Müller
+\end{figure*}
+
+\newpage
+.
+\newpage
+\large Eidesstattliche Erklärung zur Bachelorarbeit\\
+\normalsize
+\\
+Ich versichere, die Bachelorarbeit selbstständig und lediglich unter Benutzung der angegebenen Quellen und Hilfsmittel verfasst zu haben.
+\\
+Ich erkläre weiterhin, dass die vorliegende Arbeit noch nicht im Rahmen eines anderen Prüfungsverfahrens eingereicht wurde.
+\\
+\\
+Düsseldorf den 11.8.15 %_____________________________________\)
+
+	\newpage
+	.
+	\newpage
+	\tableofcontents
+	\newpage
+\begin{flushright}
+\small	\textit{Vieles von dem, was wir ohne nachzudenken tun, wird erst dann kompliziert, wenn wir es auf intellektuelle Weise betrachten. Es ist möglich, soviel über eine Sache zu wissen, daß man völlig unwissend wird.\\
+- Frank Herbert, Die Ordensburg des Wüstenplaneten}
+\end{flushright}
+\normalsize	
+		\section{Introduction}
+		\label{sec:Intro}
+		TiO\textsubscript{2} is an insulating metal oxide, which has a variety of applications.
+		-Sunscreen
+		-Paint
+		-Memristive devices
+		-hydrogen sensing
+		-catalytic water splitting
+		https://pavemaintenance.wikispaces.com/TiO2+Photocatalys+-+Shannon
+		
+		It can also be used as a solar cell. Although the efficiency of Ti=\textsubscript{2} solar cells is not as high as other materials, it is an promissing research object, since it is environmentally friendly, cheap and easy to build and has no side effects on human health.		
+		Due to its large bandgap of 3.2 mV, TiO\textsubscript{2} is only able to absorb light in the ultraviolet range, but it can be tailored by QD as shown in [BLBLA]
+		
+		\section{Titanium-oxide}
+		\label{sec:$TiO_2$}
+		Der Schmelzpunkt von Titandioxid liegt bei 1855 °C, die Verbindung ist thermisch stabil. Titandioxid ist außerdem chemisch inert. Es ist lichtbeständig, preiswert, bisherigen Untersuchungen zufolge ungiftig und daher das bedeutendste Weißpigment und auch für Lebensmittel zugelassen (E171).
+		
+		\subsection{Lattice Properties}
+		In its ground state TiO\textsubscript{2} exhibits insulating properties. However, it is able to undergo changes in its structure, which turns it in so called Magneli phases. The Magneli phases are stable non-stoichiometric states of metal-oxides, which 
+		
+		
+		BLABLA Magnelli
+		
+		\begin{figure}[htbp]
+			\centering
+				\includegraphics[width=1.00\textwidth]{C:/Users/KM/Documents/Uni/Masterarbeit/LATEX/TiO2_ball_and_stick.jpg}
+			\caption{Crystallic structure of TiO2}
+			\label{fig:Structure}
+		\end{figure}
+		
+		
+		\subsection{Utilization of $TiO_2$}
+				
+		\subsection{Titanium-oxide as a solar cell}
+		
+		
+		
+		
+		\section{Quantum Dots}
+		\label{sec:Dots}
+		Qunatum Dots are nano-sized particles, which main feature is to ... They behave in a similar way as atoms.
+		\subsection{Size quantization}
+			As the name suggests, the small size of the semiconductor Quantum Dots gives rise to quantum mechanical effects. One of these ist the so called size quantization, which leads to formation of discrete energy levels for an electron inside a Quantum Dot. \\
+			To see this, we consider a spherical potential, which is realistic for colloidal Quantum Dots, like the ones, used in following experiments.
+		\begin{align}
+		\label{eq:V(r)} 
+		V(\vec{r}) = \begin{cases} 0, & \text{for } r \leq r_0 \\ \infty, & \text{for } r > r_0 \end{cases}
+		\end{align}
+		Inserting this potential into the Schrödingers equation 
+		\begin{equation}
+		\label{eq:Schrödi}
+				\left[-\frac{\hbar ^2}{2m*} \nabla ^2 + V(\vec{r}) \right]\Phi (\vec{r}) = E \Phi (\vec{r})
+				%\endgroup
+		\end{equation}
+		yields the energy eigenvalues. Due to spherical symmetry of the potential, the spherical form of the Schrödingers equation is suitable to solve the problem:
+		\begin{equation}
+		\label{eq:SpheriSchrödi}
+		\frac{\delta \Phi}{\delta r^2} + \frac{2}{r}\frac{\delta\Phi}{\delta r} + \frac{1}{r^2}\left( \frac{1}{\sin \Theta} \frac{\delta}{\delta \Theta}\left( \sin\Theta \cdot \frac{\delta}{\delta \Theta} \right) + \frac{1}{\sin^2 \Theta} \frac{\delta^2}{\delta \phi} \right)\Phi
++ \frac{2m*}{\hbar}\left(E-V(\vec{r})\right)\Phi = 0,
+		\end{equation}
+		where m* is the reduced mass of the electron and $\Theta$ the polar angle. Using the separation ansatz, we can rewrite $\Phi (r,\Theta, \phi)$ as $R(r)\Upsilon_{l,m}(\Theta,\Phi)$, where R(r) is the radial function and $\Upsilon_{l,m}(\Theta,\Phi)$ the angle dependent spherical harmonic function.  The ansatz allows to split the Schrödingers equation \ref{eq:SpheriSchrödi} into two independent equations:
+		\begin{align}
+		\left[ \frac{1}{\sin\Theta}\frac{\delta}{\delta\Theta} + \frac{1}{\sin^2\Theta}\frac{\delta^2}{\delta\Theta^2} \right]\Upsilon_{l,m}(\Theta,\Phi) = -l(l+1)\Upsilon_{l,m}(\Theta,\Phi), \\
+		\label{eq:Radial}
+		\frac{\delta^2 F}{\delta r^2} + \frac{2}{r}\frac{\delta F}{\delta r} + \left(\frac{2m*E}{\hbar^2} - \frac{l(l+1)}{r^2}\right)F=0,
+		\end{align}
+		where l is the integer azimuthal quantum number and $F(r)=R(r)\cdot r$. Eq. \ref{eq:Radial} corresponds to a Bessel equation, which general solution reads
+		\begin{equation}
+		\label{eq:Bessel}
+		F_\nu (k) = \sum^\infty_{r=0} \frac{(-1)^r\cdot \left( \frac{k}{2}\right)^{2r+\nu}}{\Gamma (\nu+r+1)r!},
+		\end{equation}
+		which in combination with $\nu = l + \frac{1}{2}$ and  $k=\sqrt{\frac{2m*E}{\hbar^2}}$ this leads to the solution at $l=0$ :
+		\begin{equation}
+		\label{eq:BesselSolution}
+		F_{\frac{1}{2}}(k) = \sqrt{\frac{2}{\pi k}}\cdot \sin (k).
+		\end{equation}
+		\subsection{Optical properties}
+		The optical properties of the Quantum Dots depend on the one hand upon the used material ans on the other hand upon their size in a non-linear way. In 2003, Wu at al. \cite{Optic} conducted a series of experiments, where the correlation between the QD size and their emission, absorption and extinction coefficient were determined. For CdSe QD the relation between the particle emission wavelength $\lambda$ and size D amounts to:
+		\begin{equation}
+		\label{eq:Size}
+		D = (1.6122\cdot 10^{-9})\lambda^4 - (2.6575\cdot 10^{-6})\lambda^3 + (1.6242\cdot 10^{-3})\lambda^2 - 0.4277\cdot \lambda + 41.57.
+		\end{equation}
+		%Blabla wie sie das rausfanden ...
+		
+		The same study declares the relation between the molar extinction coefficient $\epsilon$ and the QD size D to be 
+		\begin{equation}
+		\label{eq:Epsilon}
+		\epsilon = 5857\cdot D^2.65.
+		\end{equation}
+		This relationship allow to define the concentration of Dots in a solution from the emission and absorption coefficients at the first excitonic peak.
+		
+		It is to be noted that these are only experimental values, which underlie a certain uncertainty.
+		
+		\subsection{Nucleation theory}
+		According to classical nucleation theory, when a homogenous nucleation takes place, the free energy is dominated by two terms, the volume term ($\propto$ r\textsuperscript{3}), which favors the growth of particles and interface term ($\propto$ r\textsuperscript{2}), which hinders the growth:
+		\begin{equation}
+		\Delta G(r) = N_{solid} \left(\mu_{liquid} - \mu_{solid}\right) + 4\pi r^2 \gamma,
+		\end{equation}
+		where N\textsubscript{solid} is the number of atoms inside the particle. 
+		\\ The equation says, that small particles with a low N\textsubscript{solid} will not grow, due to a disadvantageous surface/volume-ratio and will dissolve back into the solution. However, once there is a particle, which exceeds a critical size r*, it will be able to grow continuously. The idea, how a particle of that size is created, is that due to thermal fluctuations, rare formation of nuclei with size higher or equal the critical size is possible. The rate of this event is exponentially dependent on temperature, which is the reason to produce the QD at a higher temperature. On the other side, the temperature should not be too high, to obtain QD of narrow size distribution.
+		
+		\subsection{Synthesis of QD}
+		The quantum Dots where prepared following the colloidal approach introduced Murray et al. [2]. In this work a procedure was done that was
+described by Boatman et al. [1]. This procedure consists of three steps : preparation of selenium and cadmium solutions, heating and mixing both solutions and extracting the quantum Dots.\\
+For the first step, 37 mg of Selenium (Se) were dissolved in 5 ml ODE (C H ), mixed with 0.4 ml TOP; in a different reservoir, 13 mg Cadmium-oxide (CdO) were dissolved in 10 ml ODE and 0.6 ml oleic acid. The second step consisted of heating the Cadmium solution up to 225°C [with a Heizpilz] and adding 1 ml of the Selenium solution, while keeping the temperature constant. By adding the Selenium the nucleation reaction is started. The high temperatures allow the QDs to grow up to the size of several nm.
+The investigation by Svenja Herberts show that after a time of ~200 seconds the growth of QDs size stops, which indicates that the growth mechanism comes to an equilibrium at that stage ?? \\
 The extraction of QD was performed after 200s growth with a time interval of 15 s in between different samples
 [with a Glasspippette]. All samples emit red color, when exposed to visible light.
+		
+		%32 mg Selenium powder (Se) + 5ml Octadecene (ODE $C_18 H_36$) + 0.4 ml trioctyphosphate(TOP $C_24 H_52 P$)
+		%13 mg Cadmiumoxide (CdO)   + 10ml ODE + 0.6 ml oleic acid ($C_18 H_34 O_2$) heated to 225°C
+		%During the heating the solution becomes translucent, which indicates binding of the cadmium cations to the oleic acid, which promotes BLABLA \cite{Beate}.
+		%At 225°C 1ml of the Selenium solution is added and the growth reaction starts.
+		%After 200 s the dots are extracted via PLASTIKSPRITZE with 15s time difference between the samples.
+		
+		\subsection{Spectroscopic analysis}
+		
+		\subsubsection{Emission Spectra}
+		\label{sec:Emission}
+		\begin{figure}[htb]
+			\centering
+				\includegraphics[width=1.00\textwidth]{C:/Users/KM/Documents/Uni/Masterarbeit/LATEX/Emissionsspektren_normiert.png}
+			\caption{Emission Spectra of Quantum Dot Samples F-L.}
+			\label{fig:Emission}
+		\end{figure}
+		
+		TEXT
+		
+		
+		
+		\subsubsection{Absorption Spectra}
+		\label{sec:Absorption}
+		
+		\begin{figure}[htbp]
+			\centering
+				\includegraphics[width=0.8\textwidth]{C:/Users/KM/Documents/Uni/Masterarbeit/LATEX/Probe_F.png}
+			\caption{Absortion Spectrum of the Sample F}
+			\label{fig:Probe_F}
+		\end{figure}
+		
+		\begin{figure}[htbp]
+			\centering
+				\includegraphics[width=0.8\textwidth]{C:/Users/KM/Documents/Uni/Masterarbeit/LATEX/Probe_G.png}
+			\caption{Absortion Spectrum of the Sample G}
+			\label{fig:Probe_G}
+		\end{figure}
+		
+		\begin{figure}[htbp]
+			\centering
+				\includegraphics[width=0.8\textwidth]{C:/Users/KM/Documents/Uni/Masterarbeit/LATEX/Probe_H.png}
+			\caption{Absortion Spectrum of the Sample H}
+			\label{fig:Probe_H}
+		\end{figure}
+		
+		\begin{figure}[htbp]
+			\centering
+				\includegraphics[width=0.8\textwidth]{C:/Users/KM/Documents/Uni/Masterarbeit/LATEX/Probe_K.png}
+			\caption{Absortion Spectrum of the Sample K}
+			\label{fig:Probe_K}
+		\end{figure}
+		
+		\begin{figure}[htbp]
+			\centering
+				\includegraphics[width=1.00\textwidth]{C:/Users/KM/Documents/Uni/Masterarbeit/LATEX/Probe_L.png}
+			\caption{Absortion Spectrum of the Sample L}
+			\label{fig:Probe_L}
+		\end{figure}
+		
+		
+		Due to the long growth time the size of the Dots in different samples is about the same.
+		
+		\section{Synthese von Quantum Dots und Titanoxid}
+		\label{sec:Synthesis}
+		%Reflection on pro and contra of QD-TiO2-Linkage
+		\subsection{Fabrication of $Ti0_2$}
+			The titanium oxide samples where prepared by plasma electrolytic oxidation \cite{Titan1} by Mhamed El Achhab. In this process, the titanium foil is submerged in a solution of sulfuric acid and is set under a voltage with a current limited to 200 mA \cite{Titan1}. The current leads to electrical discharges at the acid/titanium interface, which lead to extremely high local temperatures, so that the titanium degrades and at the same time the acid solution evaporates. The escaping gases form the hot titanium surface, which leads to a porous oxide layer on top of the titanium foil \cite{Titan1}. At voltages below 90 V the oxide is formed only as Anatase. At and above 90 V rutile structures can be observed. The finished 170 V sample exhibits only rutile since anatase ist completely transformed into the near-surface regionof pure titanium\cite{Titan1}. WIE ??
+		\subsection{Messaufbau}
+		
+		\subsection{Messergebnisse}
+		
+		\newpage
+\begin{thebibliography}{}
+\bibitem{Beate} Horn, Beate : Cadmiumselenid / Cadmiumsulfid Heterostruktur-Quantenpunkte in Titandioxid.
+						{\sl Heinrich-Heine-Universität (2015)}.
+\bibitem{Small}Reiss,Peter; Protie `re, Myriam; Li,Liang : Core/Shell Semiconductor Nanocrystals.
+						{\sl Small, Wiley-VCH Verlag (2009)}.
+\bibitem{QD(SSC)s-SC} Yang, YUE : Highly stable CdSe/CdS/ZnS Flourophores in Acidic Environment: Acile preparation and modification of core/shell/shell nanocrystals.
+						{\sl Chem. Res. Chinese Universities 26(6) (2010)}.
+\bibitem{QDs-SC} Robel, Istva ´n; Subramanian, Vaidyanathan; Kuno, Masaru; Kamat, Prashant : Quantum Dot Solar Cells. Harvesting Light Energy with CdSe Nanocrystals Molecularly Linked to Mesoscopic TiO2 Films.
+						{\sl J. Am. Chem. Soc. 128 (2008)}.
+\bibitem{Attachment}Pernik, Douglas; Tvrdy, Kevin; Radich, James; Kamat,Prashant : Tracking the Adsorption and Electron Injection Rates of CdSe Quantum Dots on TiO2: Linked versus Direct Attachment.
+						{\sl J. American Chemical Society 115 (2011)}.
+\bibitem{Optic} Yu W., Qu L.,2003, Experimental Determination of the Extinction Coefficient ofCdTe, CdSe, and CdS Nanocrystals.
+						{\sl Chem. Mater. 15 (2003)}.
+\bibitem{Titan1}El Achhab, Mhamed : A microstructual study of the structure of plasma oxidized titanium foils.
+						{\sl Appl. Phys, A 116:2039-2044 (2014)}
+\end{thebibliography}
+		
+		
+\end{document}
